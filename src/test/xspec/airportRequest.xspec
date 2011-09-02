@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<x:description xmlns:x="http://www.jenitennison.com/xslt/xspec" xmlns:functx="http://www.functx.com"
+               stylesheet="../../main/resources/xslt/airportRequest.xsl"
+               xmlns:xs="http://www.w3.org/2001/XMLSchema">
+
+
+    <x:scenario label="test create airportRequest">
+
+        <x:context select="/">
+            <airport>JFK</airport>
+        </x:context>
+        <x:expect label="validating output">
+            <getAirportInformationByAirportCode xmlns="http://www.webserviceX.NET">
+                <airportCode>JFK</airportCode>
+            </getAirportInformationByAirportCode>
+        </x:expect>
+    </x:scenario>
+
+
+</x:description>

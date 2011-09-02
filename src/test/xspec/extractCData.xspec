@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<x:description xmlns:x="http://www.jenitennison.com/xslt/xspec" xmlns:functx="http://www.functx.com"
+               stylesheet="../../main/resources/xslt/extractCData.xsl"
+               xmlns:xs="http://www.w3.org/2001/XMLSchema">
+
+
+    <x:scenario label="test create airportRequest" pending="yes">
+
+        <x:context select="/">
+            <getAirportInformationByAirportCodeResponse xmlns="http://www.webserviceX.NET">
+                <getAirportInformationByAirportCodeResult><![CDATA[<NewDataSet>
+  <Table>
+    <AirportCode>JFK</AirportCode>
+    <CityOrAirportName>NEW YORK NY/NEWARK KENNEDY</CityOrAirportName>
+    <Country>United States</Country>
+    <CountryAbbrviation>US</CountryAbbrviation>
+    <CountryCode>22</CountryCode>
+    <GMTOffset>5</GMTOffset>
+    <RunwayLengthFeet>14572</RunwayLengthFeet>
+    <RunwayElevationFeet>13</RunwayElevationFeet>
+    <LatitudeDegree>40</LatitudeDegree>
+    <LatitudeMinute>38</LatitudeMinute>
+    <LatitudeSecond>0</LatitudeSecond>
+    <LatitudeNpeerS>N</LatitudeNpeerS>
+    <LongitudeDegree>73</LongitudeDegree>
+    <LongitudeMinute>47</LongitudeMinute>
+    <LongitudeSeconds>0</LongitudeSeconds>
+    <LongitudeEperW>W</LongitudeEperW>
+  </Table>
+  <Table>
+    <AirportCode>JFK</AirportCode>
+    <CityOrAirportName>NEW YORK NY/NEWARK KENNEDY</CityOrAirportName>
+    <Country>United States</Country>
+    <CountryAbbrviation>US</CountryAbbrviation>
+    <CountryCode>22</CountryCode>
+    <GMTOffset>5</GMTOffset>
+    <RunwayLengthFeet>14572</RunwayLengthFeet>
+    <RunwayElevationFeet>13</RunwayElevationFeet>
+    <LatitudeDegree>40</LatitudeDegree>
+    <LatitudeMinute>38</LatitudeMinute>
+    <LatitudeSecond>0</LatitudeSecond>
+    <LatitudeNpeerS>N</LatitudeNpeerS>
+    <LongitudeDegree>73</LongitudeDegree>
+    <LongitudeMinute>47</LongitudeMinute>
+    <LongitudeSeconds>0</LongitudeSeconds>
+    <LongitudeEperW>W</LongitudeEperW>
+  </Table>
+</NewDataSet>]]></getAirportInformationByAirportCodeResult>
+            </getAirportInformationByAirportCodeResponse>
+        </x:context>
+        <x:expect label="validating output"  select="/" test="count(//Table)">2</x:expect>
+    </x:scenario>
+
+
+</x:description>

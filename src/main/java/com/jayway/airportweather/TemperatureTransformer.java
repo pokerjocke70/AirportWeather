@@ -16,7 +16,7 @@
 package com.jayway.airportweather;
 
 public class TemperatureTransformer {
-	public double fromFahrenheitToCelsius(Number f) {
-		return (f.doubleValue()-32)*5/9;
+	public int fromFahrenheitToCelsius(Number f) {
+		return (int)(f.doubleValue()-32)*5/9;
 	}
 }

@@ -15,77 +15,70 @@
  */
 package com.jayway.airportweather;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertTrue;
-import static org.junit.Assert.fail;
-
-import java.text.SimpleDateFormat;
-import java.util.Date;
-
 import org.apache.camel.CamelContext;
 import org.apache.camel.CamelExecutionException;
 import org.apache.camel.ProducerTemplate;
 import org.apache.camel.RollbackExchangeException;
 import org.apache.camel.builder.AdviceWithRouteBuilder;
-import org.apache.commons.lang.time.DateUtils;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
-import com.jayway.airportweather.model.Location;
+import static org.junit.Assert.*;
+
 
 public class AirportWeatherTest {
-	private CamelContext context;
-	
-	@Before
-	public void before() throws Exception {
-		context = AirportWeather.makeCamelContext();
-		context.addRoutes(AirportWeather.createRouteBuilder());
-	}
+    private CamelContext context;
 
-	@After
-	public void after() throws Exception {
-		if (context != null) {
-			context.stop();
-		}
-	}
+    @Before
+    public void before() throws Exception {
+        context = AirportWeather.makeCamelContext();
+        context.addRoutes(AirportWeather.createRouteBuilder());
+    }
 
-	@Test
-	public void testAirportNotFound() throws Exception {
-		context.getRouteDefinitions().get(0).adviceWith(context, new AdviceWithRouteBuilder() {
-		    @Override
-		    public void configure() throws Exception {
-		    		interceptSendToEndpoint(AirportWeather.INVOKE_GET_AIRPORT_INFORMATION_BY_AIRPORT_CODE).skipSendToOriginalEndpoint().to("velocity:AirportResult-empty.xml");
-		    }
-		});
-		context.start();
-		expectRollback("No Airport found");
-	}
+    @After
+    public void after() throws Exception {
+        if (context != null) {
+            context.stop();
+        }
+    }
 
-	@Test
-	public void testTemperatureNotFound() throws Exception {
-		context.getRouteDefinitions().get(0).adviceWith(context, new AdviceWithRouteBuilder() {
-		    @Override
-		    public void configure() throws Exception {
-		    		interceptSendToEndpoint(AirportWeather.INVOKE_GET_AIRPORT_INFORMATION_BY_AIRPORT_CODE).skipSendToOriginalEndpoint().to("velocity:AirportResult.xml");
-		    		interceptSendToEndpoint(AirportWeather.INVOKE_NDFD_GEN).skipSendToOriginalEndpoint().to("velocity:NDFDgen-reply-blank.xml");
-		    }
-		});
-		context.start();
-		expectRollback("No temperature found");
-	}
+    @Test
+    public void testAirportNotFound() throws Exception {
+        context.getRouteDefinitions().get(0).adviceWith(context, new AdviceWithRouteBuilder() {
+            @Override
+            public void configure() throws Exception {
+                interceptSendToEndpoint(AirportWeather.INVOKE_GET_AIRPORT_INFORMATION_BY_AIRPORT_CODE).skipSendToOriginalEndpoint().to("velocity:empty.xml");
+            }
+        });
+        context.start();
+        expectRollback("No Airport found");
+    }
 
-	private void expectRollback(String message) {
-		ProducerTemplate template = context.createProducerTemplate();
-		String body = "EWR";
-		try {
-			template.requestBody(AirportWeather.GET_MAXIMUM_TEMPERATUR_AT_AIRPORT, body);
-			fail("Expected exception");
-		} catch (CamelExecutionException e) {
-			Throwable cause = e.getCause();
-			assertEquals(RollbackExchangeException.class, cause.getClass());
-			assertTrue(cause.getMessage().contains(message));
-		}
-	}
+    @Test
+    public void testTemperatureNotFound() throws Exception {
+        context.getRouteDefinitions().get(0).adviceWith(context, new AdviceWithRouteBuilder() {
+            @Override
+            public void configure() throws Exception {
+                interceptSendToEndpoint(AirportWeather.INVOKE_GET_AIRPORT_INFORMATION_BY_AIRPORT_CODE).skipSendToOriginalEndpoint().to("velocity:AirportResult.xml");
+                interceptSendToEndpoint(AirportWeather.INVOKE_NDFD_GEN).skipSendToOriginalEndpoint().to("velocity:empty.xml");
+            }
+        });
+        context.start();
+        expectRollback("No temperature found");
+    }
+
+    private void expectRollback(String message) {
+        ProducerTemplate template = context.createProducerTemplate();
+        String body = "EWR";
+        try {
+            template.requestBody(AirportWeather.GET_MAXIMUM_TEMPERATUR_AT_AIRPORT, body);
+            fail("Expected exception");
+        } catch (CamelExecutionException e) {
+            Throwable cause = e.getCause();
+            assertEquals(RollbackExchangeException.class, cause.getClass());
+            assertTrue(cause.getMessage().contains(message));
+        }
+    }
 
 }

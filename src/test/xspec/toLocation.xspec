@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<x:description xmlns:x="http://www.jenitennison.com/xslt/xspec" xmlns:functx="http://www.functx.com"
+               stylesheet="../../main/resources/xslt/toLocation.xsl"
+               xmlns:f="http://xspec-demo/functions"
+               xmlns:xs="http://www.w3.org/2001/XMLSchema">
+
+
+    <x:scenario label="test create toLocation">
+
+        <x:scenario label="testing createCoordinate function">
+
+            <x:call function="f:createCoordinate">
+                <x:param name="degree" select="xs:double(1)"/>
+                <x:param name="minute" select="xs:double(12)"/>
+                <x:param name="seconds" select="xs:double(45)"/>
+            </x:call>
+
+            <x:expect label="validating output">1.2125</x:expect>
+        </x:scenario>
+
+        <x:scenario label="testing createCoordinate function with zeros">
+
+            <x:call function="f:createCoordinate">
+                <x:param name="degree" select="xs:double(0)"/>
+                <x:param name="minute" select="xs:double(0)"/>
+                <x:param name="seconds" select="xs:double(0)"/>
+            </x:call>
+
+            <x:expect label="validating output">0</x:expect>
+        </x:scenario>
+
+        <x:scenario label="testing createCoordinate function with one zero">
+
+            <x:call function="f:createCoordinate">
+                <x:param name="degree" select="xs:double(0)"/>
+                <x:param name="minute" select="xs:double(1)"/>
+                <x:param name="seconds" select="xs:double(1)"/>
+            </x:call>
+
+            <x:expect label="validating output">0.016944444444444443</x:expect>
+        </x:scenario>
+
+
+    </x:scenario>
+
+    <x:scenario label="testing output">
+        <x:context href="./../resources/AirportResult.xml">
+        </x:context>
+        <x:expect label="Validating output structure">
+            <Location>
+                <Latitude>40.68333333333333</Latitude>
+                <Longitude>-74.16666666666667</Longitude>
+            </Location>
+        </x:expect>
+
+    </x:scenario>
+</x:description>

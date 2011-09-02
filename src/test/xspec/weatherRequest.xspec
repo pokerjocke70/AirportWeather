@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<x:description xmlns:x="http://www.jenitennison.com/xslt/xspec" xmlns:functx="http://www.functx.com"
+               stylesheet="../../main/resources/xslt/weatherRequest.xsl"
+               xmlns:ndf="http://www.weather.gov/forecasts/xml/DWMLgen/wsdl/ndfdXML.wsdl"
+               xmlns:xs="http://www.w3.org/2001/XMLSchema">
+
+
+    <x:param name="startDate" select="xs:dateTime('2011-06-20T12:01:01')"/>
+    <x:param name="endDate" select="xs:dateTime('2011-06-27T12:01:01')"/>
+
+    <x:scenario label="test create weatherRequest">
+
+        <x:context select="/">
+            <Location>
+                <Latitude>40.5</Latitude>
+                <Longitude>-33.6</Longitude>
+            </Location>
+        </x:context>
+        <x:expect label="validating output">
+            <ndf:NDFDgen>
+                <latitude>40.5</latitude>
+                <longitude>-33.6</longitude>
+                <product>time-series</product>
+                <startTime>2011-06-20T12:01:01</startTime>
+                <endTime>2011-06-27T12:01:01</endTime>
+                <weatherParameters>
+                    <maxt>true</maxt>
+                    <mint>true</mint>
+                </weatherParameters>
+            </ndf:NDFDgen>
+        </x:expect>
+    </x:scenario>
+
+
+</x:description>
