@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="file:/apps/xspec-v0.2/format-xspec-report.xsl"?><x:report xmlns:ndf="http://www.weather.gov/forecasts/xml/DWMLgen/wsdl/ndfdXML.wsdl"
+          xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
+          xmlns:xs="http://www.w3.org/2001/XMLSchema"
+          xmlns:test="http://www.jenitennison.com/xslt/unit-test"
+          xmlns:x="http://www.jenitennison.com/xslt/xspec"
+          xmlns:impl="urn:x-xspec:compile:xslt:impl"
+          xmlns:functx="http://www.functx.com"
+          stylesheet="file:/Users/jocke/Documents/AirportWeather_xspec/src/main/resources/xslt/weatherRequest.xsl"
+          date="2011-09-02T08:58:35.513+02:00">
+   <x:scenario>
+      <x:label>test create weatherRequest</x:label>
+      <x:context select="/">
+         <Location>
+            <Latitude>40.5</Latitude>
+            <Longitude>-33.6</Longitude>
+         </Location>
+      </x:context>
+      <x:result>
+         <ndf:NDFDgen>
+            <latitude>40.5</latitude>
+            <longitude>-33.6</longitude>
+            <product>time-series</product>
+            <startTime>2011-06-20T12:01:01</startTime>
+            <endTime>2011-06-27T12:01:01</endTime>
+            <weatherParameters>
+               <maxt>true</maxt>
+               <mint>true</mint>
+            </weatherParameters>
+         </ndf:NDFDgen>
+      </x:result>
+      <x:test successful="true">
+         <x:label>validating output</x:label>
+         <x:expect>
+            <ndf:NDFDgen>
+               <latitude>40.5</latitude>
+               <longitude>-33.6</longitude>
+               <product>time-series</product>
+               <startTime>2011-06-20T12:01:01</startTime>
+               <endTime>2011-06-27T12:01:01</endTime>
+               <weatherParameters>
+                  <maxt>true</maxt>
+                  <mint>true</mint>
+               </weatherParameters>
+            </ndf:NDFDgen>
+         </x:expect>
+      </x:test>
+   </x:scenario>
+</x:report>

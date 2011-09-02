@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="file:/apps/xspec-v0.2/format-xspec-report.xsl"?><x:report xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
+          xmlns:xs="http://www.w3.org/2001/XMLSchema"
+          xmlns:test="http://www.jenitennison.com/xslt/unit-test"
+          xmlns:x="http://www.jenitennison.com/xslt/xspec"
+          xmlns:impl="urn:x-xspec:compile:xslt:impl"
+          xmlns:functx="http://www.functx.com"
+          stylesheet="file:/Users/jocke/Documents/AirportWeather_xspec/src/main/resources/xslt/extractCData.xsl"
+          date="2011-09-02T09:48:33.658+02:00">
+   <x:scenario>
+      <x:label>test create airportRequest</x:label>
+      <x:context select="/">
+         <getAirportInformationByAirportCodeResponse xmlns="http://www.webserviceX.NET">
+            <getAirportInformationByAirportCodeResult>&lt;NewDataSet&gt;
+  &lt;Table&gt;
+    &lt;AirportCode&gt;JFK&lt;/AirportCode&gt;
+    &lt;CityOrAirportName&gt;NEW YORK NY/NEWARK KENNEDY&lt;/CityOrAirportName&gt;
+    &lt;Country&gt;United States&lt;/Country&gt;
+    &lt;CountryAbbrviation&gt;US&lt;/CountryAbbrviation&gt;
+    &lt;CountryCode&gt;22&lt;/CountryCode&gt;
+    &lt;GMTOffset&gt;5&lt;/GMTOffset&gt;
+    &lt;RunwayLengthFeet&gt;14572&lt;/RunwayLengthFeet&gt;
+    &lt;RunwayElevationFeet&gt;13&lt;/RunwayElevationFeet&gt;
+    &lt;LatitudeDegree&gt;40&lt;/LatitudeDegree&gt;
+    &lt;LatitudeMinute&gt;38&lt;/LatitudeMinute&gt;
+    &lt;LatitudeSecond&gt;0&lt;/LatitudeSecond&gt;
+    &lt;LatitudeNpeerS&gt;N&lt;/LatitudeNpeerS&gt;
+    &lt;LongitudeDegree&gt;73&lt;/LongitudeDegree&gt;
+    &lt;LongitudeMinute&gt;47&lt;/LongitudeMinute&gt;
+    &lt;LongitudeSeconds&gt;0&lt;/LongitudeSeconds&gt;
+    &lt;LongitudeEperW&gt;W&lt;/LongitudeEperW&gt;
+  &lt;/Table&gt;
+  &lt;Table&gt;
+    &lt;AirportCode&gt;JFK&lt;/AirportCode&gt;
+    &lt;CityOrAirportName&gt;NEW YORK NY/NEWARK KENNEDY&lt;/CityOrAirportName&gt;
+    &lt;Country&gt;United States&lt;/Country&gt;
+    &lt;CountryAbbrviation&gt;US&lt;/CountryAbbrviation&gt;
+    &lt;CountryCode&gt;22&lt;/CountryCode&gt;
+    &lt;GMTOffset&gt;5&lt;/GMTOffset&gt;
+    &lt;RunwayLengthFeet&gt;14572&lt;/RunwayLengthFeet&gt;
+    &lt;RunwayElevationFeet&gt;13&lt;/RunwayElevationFeet&gt;
+    &lt;LatitudeDegree&gt;40&lt;/LatitudeDegree&gt;
+    &lt;LatitudeMinute&gt;38&lt;/LatitudeMinute&gt;
+    &lt;LatitudeSecond&gt;0&lt;/LatitudeSecond&gt;
+    &lt;LatitudeNpeerS&gt;N&lt;/LatitudeNpeerS&gt;
+    &lt;LongitudeDegree&gt;73&lt;/LongitudeDegree&gt;
+    &lt;LongitudeMinute&gt;47&lt;/LongitudeMinute&gt;
+    &lt;LongitudeSeconds&gt;0&lt;/LongitudeSeconds&gt;
+    &lt;LongitudeEperW&gt;W&lt;/LongitudeEperW&gt;
+  &lt;/Table&gt;
+&lt;/NewDataSet&gt;</getAirportInformationByAirportCodeResult>
+         </getAirportInformationByAirportCodeResponse>
+      </x:context>
+      <x:result select="/node()">&lt;NewDataSet&gt;
+  &lt;Table&gt;
+    &lt;AirportCode&gt;JFK&lt;/AirportCode&gt;
+    &lt;CityOrAirportName&gt;NEW YORK NY/NEWARK KENNEDY&lt;/CityOrAirportName&gt;
+    &lt;Country&gt;United States&lt;/Country&gt;
+    &lt;CountryAbbrviation&gt;US&lt;/CountryAbbrviation&gt;
+    &lt;CountryCode&gt;22&lt;/CountryCode&gt;
+    &lt;GMTOffset&gt;5&lt;/GMTOffset&gt;
+    &lt;RunwayLengthFeet&gt;14572&lt;/RunwayLengthFeet&gt;
+    &lt;RunwayElevationFeet&gt;13&lt;/RunwayElevationFeet&gt;
+    &lt;LatitudeDegree&gt;40&lt;/LatitudeDegree&gt;
+    &lt;LatitudeMinute&gt;38&lt;/LatitudeMinute&gt;
+    &lt;LatitudeSecond&gt;0&lt;/LatitudeSecond&gt;
+    &lt;LatitudeNpeerS&gt;N&lt;/LatitudeNpeerS&gt;
+    &lt;LongitudeDegree&gt;73&lt;/LongitudeDegree&gt;
+    &lt;LongitudeMinute&gt;47&lt;/LongitudeMinute&gt;
+    &lt;LongitudeSeconds&gt;0&lt;/LongitudeSeconds&gt;
+    &lt;LongitudeEperW&gt;W&lt;/LongitudeEperW&gt;
+  &lt;/Table&gt;
+  &lt;Table&gt;
+    &lt;AirportCode&gt;JFK&lt;/AirportCode&gt;
+    &lt;CityOrAirportName&gt;NEW YORK NY/NEWARK KENNEDY&lt;/CityOrAirportName&gt;
+    &lt;Country&gt;United States&lt;/Country&gt;
+    &lt;CountryAbbrviation&gt;US&lt;/CountryAbbrviation&gt;
+    &lt;CountryCode&gt;22&lt;/CountryCode&gt;
+    &lt;GMTOffset&gt;5&lt;/GMTOffset&gt;
+    &lt;RunwayLengthFeet&gt;14572&lt;/RunwayLengthFeet&gt;
+    &lt;RunwayElevationFeet&gt;13&lt;/RunwayElevationFeet&gt;
+    &lt;LatitudeDegree&gt;40&lt;/LatitudeDegree&gt;
+    &lt;LatitudeMinute&gt;38&lt;/LatitudeMinute&gt;
+    &lt;LatitudeSecond&gt;0&lt;/LatitudeSecond&gt;
+    &lt;LatitudeNpeerS&gt;N&lt;/LatitudeNpeerS&gt;
+    &lt;LongitudeDegree&gt;73&lt;/LongitudeDegree&gt;
+    &lt;LongitudeMinute&gt;47&lt;/LongitudeMinute&gt;
+    &lt;LongitudeSeconds&gt;0&lt;/LongitudeSeconds&gt;
+    &lt;LongitudeEperW&gt;W&lt;/LongitudeEperW&gt;
+  &lt;/Table&gt;
+&lt;/NewDataSet&gt;</x:result>
+      <x:test successful="false">
+         <x:label>validating output</x:label>
+         <x:expect select="()"/>
+      </x:test>
+   </x:scenario>
+</x:report>

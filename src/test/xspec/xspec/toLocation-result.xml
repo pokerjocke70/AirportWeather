@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="file:/apps/xspec-v0.2/format-xspec-report.xsl"?><x:report xmlns:f="http://xspec-demo/functions"
+          xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
+          xmlns:xs="http://www.w3.org/2001/XMLSchema"
+          xmlns:test="http://www.jenitennison.com/xslt/unit-test"
+          xmlns:x="http://www.jenitennison.com/xslt/xspec"
+          xmlns:impl="urn:x-xspec:compile:xslt:impl"
+          xmlns:functx="http://www.functx.com"
+          stylesheet="file:/Users/jocke/Documents/AirportWeather_xspec/src/main/resources/xslt/toLocation.xsl"
+          date="2011-09-02T09:33:47.718+02:00">
+   <x:scenario>
+      <x:label>test create toLocation</x:label>
+      <x:scenario>
+         <x:label>testing createCoordinate function</x:label>
+         <x:call function="f:createCoordinate">
+            <x:param name="degree" select="xs:double(1)"/>
+            <x:param name="minute" select="xs:double(12)"/>
+            <x:param name="seconds" select="xs:double(45)"/>
+         </x:call>
+         <x:result select="/node()">1.2125</x:result>
+         <x:test successful="true">
+            <x:label>validating output</x:label>
+            <x:expect select="/node()">1.2125</x:expect>
+         </x:test>
+      </x:scenario>
+      <x:scenario>
+         <x:label>testing createCoordinate function with zeros</x:label>
+         <x:call function="f:createCoordinate">
+            <x:param name="degree" select="xs:double(0)"/>
+            <x:param name="minute" select="xs:double(0)"/>
+            <x:param name="seconds" select="xs:double(0)"/>
+         </x:call>
+         <x:result select="/node()">0</x:result>
+         <x:test successful="true">
+            <x:label>validating output</x:label>
+            <x:expect select="/node()">0</x:expect>
+         </x:test>
+      </x:scenario>
+      <x:scenario>
+         <x:label>testing createCoordinate function with one zero</x:label>
+         <x:call function="f:createCoordinate">
+            <x:param name="degree" select="xs:double(0)"/>
+            <x:param name="minute" select="xs:double(1)"/>
+            <x:param name="seconds" select="xs:double(1)"/>
+         </x:call>
+         <x:result select="/node()">0.016944444444444443</x:result>
+         <x:test successful="true">
+            <x:label>validating output</x:label>
+            <x:expect select="/node()">0.016944444444444443</x:expect>
+         </x:test>
+      </x:scenario>
+   </x:scenario>
+   <x:scenario>
+      <x:label>testing output</x:label>
+      <x:context href="file:/Users/jocke/Documents/AirportWeather_xspec/src/test/resources/AirportResult.xml"/>
+      <x:result>
+         <Location>
+            <Latitude>40.68333333333333</Latitude>
+            <Longitude>-74.16666666666667</Longitude>
+         </Location>
+      </x:result>
+      <x:test successful="true">
+         <x:label>Validating output structure</x:label>
+         <x:expect>
+            <Location>
+               <Latitude>40.68333333333333</Latitude>
+               <Longitude>-74.16666666666667</Longitude>
+            </Location>
+         </x:expect>
+      </x:test>
+   </x:scenario>
+</x:report>
