@@ -21,3 +21,5 @@ Also notice that the web services only support US airports!
 
 For more information see http://blog.jayway.com/2011/07/14/apache_camel_and_soap/
 
+An article about the rewrite can be found here: http://pokerjocke.blogspot.com/2011/09/unit-testing-xsl-transformations-with.html
+
